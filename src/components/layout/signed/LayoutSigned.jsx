@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import { CssBaseline, ThemeProvider } from "@mui/material";
-
+import { Box, CssBaseline, ThemeProvider, Typography } from "@mui/material";
 import Topbar from "./Topbar";
 import Sidebar from "./Sidebar";
-
 import { useTheme } from "../../../common/hooks";
 
 const LayoutSigned = () => {

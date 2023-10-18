@@ -1,10 +1,11 @@
-import { Box, Button, Typography, useTheme } from "@mui/material";
+import { Box, Button, MenuItem, Select, Typography, useTheme } from "@mui/material";
 // import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import Header from "../../../components/layout/signed/Header";
 import { tokens } from "../../../common/hooks/Theme";
 import BarChart from "../../../components/layout/signed/BarChart";
 import PieChart from "../../../components/layout/signed/PieChart";
 import Dates from "../../../components/layout/signed/Date";
+import { FormLabel } from "react-bootstrap";
 
 const DashboardWo = () => {
   const theme = useTheme();
@@ -15,18 +16,34 @@ const DashboardWo = () => {
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Header title="Dashboard Work Order"/>
         <Box>
-        <Button
+          <FormLabel
             sx={{
-              backgroundColor: colors.blueAccent[700],
-              color: colors.grey[100],
+              marginBottom: "2px",
               fontSize: "14px",
               fontWeight: "bold",
-              padding: "10px 20px",
+              marginRight: "8px",
             }}
           >
-            <Dates/>
-          </Button>
-        </Box>
+            Calender Year :
+          </FormLabel>
+          <Select
+            fullWidth
+            variant="outlined"
+            name="repeatevery"
+            sx={{
+              marginBottom: "2px",
+              fontSize: "14px",
+              fontWeight: "bold",
+              marginRight: "8px",
+            }}
+          >
+            <MenuItem value="">Non Select</MenuItem>
+            <MenuItem value="1">Perminggu</MenuItem>
+            <MenuItem value="2">Perbulan</MenuItem>
+            <MenuItem value="3">Pertahun</MenuItem>
+            <MenuItem value="4"><Dates /></MenuItem>
+          </Select>
+      </Box>
 
       </Box>
       

@@ -13,13 +13,14 @@ import {
   Select,
   MenuItem,
 } from "@mui/material";
-import { blue, grey } from "@mui/material/colors";
+import { blue, green, grey, red } from "@mui/material/colors";
 import { Formik } from "formik";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import ButtonGroup from "@mui/material/ButtonGroup";
+import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
-import { styled } from "@mui/material/styles";
 
 export default function FormDialog() {
   const [open, setOpen] = React.useState(false);
@@ -31,18 +32,6 @@ export default function FormDialog() {
   const handleClose = () => {
     setOpen(false);
   };
-
-  const VisuallyHiddenInput = styled("input")({
-    clip: "rect(0 0 0 0)",
-    clipPath: "inset(50%)",
-    height: 1,
-    overflow: "hidden",
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    whiteSpace: "nowrap",
-    width: 1,
-  });
 
   return (
     <Box>
@@ -107,36 +96,7 @@ export default function FormDialog() {
                           fontWeight: "bold",
                         }}
                       >
-                        Date Time
-                      </FormLabel>
-                      <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DatePicker label="Select Date" />
-                      </LocalizationProvider>
-                      <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DatePicker label="Expired Date" />
-                      </LocalizationProvider>
-                    </FormControl>
-                    <FormControl sx={{ gridColumn: "span 4" }}>
-                      <FormLabel
-                        sx={{
-                          marginBottom: "8px",
-                          fontSize: "16px",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        File Upload
-                      </FormLabel>
-                      <TextField type="file"/>
-                    </FormControl>
-                    <FormControl sx={{ gridColumn: "span 4" }}>
-                      <FormLabel
-                        sx={{
-                          marginBottom: "8px",
-                          fontSize: "16px",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        Select Vendor
+                        Supliyer
                       </FormLabel>
                       <Select
                         fullWidth
@@ -147,10 +107,6 @@ export default function FormDialog() {
                         name="repeatevery"
                       >
                         <MenuItem value="">Non Select</MenuItem>
-                        <MenuItem value="1">Week</MenuItem>
-                        <MenuItem value="2">2 Month</MenuItem>
-                        <MenuItem value="3">3 Month</MenuItem>
-                        <MenuItem value="4">Custom</MenuItem>
                       </Select>
                     </FormControl>
                     <FormControl sx={{ gridColumn: "span 4" }}>
@@ -161,7 +117,28 @@ export default function FormDialog() {
                           fontWeight: "bold",
                         }}
                       >
-                        Reminder (x days before)
+                        Contact Person
+                      </FormLabel>
+                      <Select
+                        fullWidth
+                        variant="outlined"
+                        onBlur={handleBlur}
+                        // onChange={handleChange}
+                        // value={values.name}
+                        name="aset"
+                      >
+                        <MenuItem value="">Non Select</MenuItem>
+                      </Select>
+                    </FormControl>
+                    <FormControl sx={{ gridColumn: "span 4" }}>
+                      <FormLabel
+                        sx={{
+                          marginBottom: "8px",
+                          fontSize: "16px",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Note
                       </FormLabel>
                       <TextField
                         fullWidth
@@ -183,19 +160,81 @@ export default function FormDialog() {
                           fontWeight: "bold",
                         }}
                       >
-                        Notes
+                        Code Of Condict
                       </FormLabel>
-                      <TextField
+                      <Select
                         fullWidth
                         variant="outlined"
-                        type="text"
                         onBlur={handleBlur}
                         // onChange={handleChange}
                         // value={values.name}
-                        name="name"
-                        error={!!touched.name && !!errors.name}
-                        helperText={touched.name && errors.name}
-                      />
+                        name="aset"
+                      >
+                        <MenuItem value="">Non Select</MenuItem>
+                      </Select>
+                    </FormControl>
+                    <FormControl sx={{ gridColumn: "span 4" }}>
+                      <FormLabel
+                        sx={{
+                          marginBottom: "8px",
+                          fontSize: "16px",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        CSMS
+                      </FormLabel>
+                      <Select
+                        fullWidth
+                        variant="outlined"
+                        onBlur={handleBlur}
+                        // onChange={handleChange}
+                        // value={values.name}
+                        name="aset"
+                      >
+                        <MenuItem value="">Non Select</MenuItem>
+                      </Select>
+                    </FormControl>
+                    <FormControl sx={{ gridColumn: "span 4" }}>
+                      <FormLabel
+                        sx={{
+                          marginBottom: "8px",
+                          fontSize: "16px",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Vendor Evaluation
+                      </FormLabel>
+                      <Select
+                        fullWidth
+                        variant="outlined"
+                        onBlur={handleBlur}
+                        // onChange={handleChange}
+                        // value={values.name}
+                        name="aset"
+                      >
+                        <MenuItem value="">Non Select</MenuItem>
+                      </Select>
+                    </FormControl>
+                    <FormControl sx={{ gridColumn: "span 4" }}>
+                      <FormLabel
+                        sx={{
+                          marginBottom: "8px",
+                          fontSize: "16px",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Contractor Reguliaton
+                      </FormLabel>
+                      <Select
+                        fullWidth
+                        variant="outlined"
+                        onBlur={handleBlur}
+                        // onChange={handleChange}
+                        // value={values.name}
+                        name="aset"
+                      >
+                        <MenuItem value="">Non Select</MenuItem>
+                      </Select>
                     </FormControl>
                   </Box>
                   <DialogActions>

@@ -13,7 +13,7 @@ const LayoutPublic = lazy(() => import("../components/layout/public/LayoutPublic
 const LayoutSigned = lazy(() => import("../components/layout/signed/LayoutSigned"));
 
 // Pages
-const Home = lazy(() => import("../pages/Home"));
+const Home = lazy(() => import("../components/layout/public/Home"));
 const SignIn = lazy(() => import("../pages/auth/SignIn"));
 const Page404 = lazy(() => import("../pages/Page404"));
 const Page500 = lazy(() => import("../pages/Page500"));
@@ -43,6 +43,8 @@ const Vendor = lazy (() => import("../pages/contact/vendor"))
 const Contact = lazy (() => import("../pages/contact/contact-person"))
 
 const Setting = lazy (()=> import("../pages/setting/year"))
+
+const Profile = lazy (()=> import("../pages/profile/index"))
 
 function App() {
   const { configs } = useConfig();
@@ -98,6 +100,8 @@ function App() {
           <Route path="contact-person" name="contact" element= {<Contact/>}/>
 
           <Route path="year" name="Setting" element= {<Setting/>}/>
+
+          <Route path="profile" name="Profile" element= {<Profile/>}/>
 
           <Route path="*" name="Page 404" element={<div>Page 404 Admin</div>} />
         </Route>

@@ -1,30 +1,58 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Box, Paper, Typography, useTheme } from "@mui/material";
 import {
   DataGrid,
   GridToolbarContainer,
   GridToolbarExport,
 } from "@mui/x-data-grid";
-// import { useGetProvincesQuery } from "../../../slices/master-data";
-import { mockDataContacts } from "../../../common/data/datapalsu";
+import { mockDataContacts as data } from "../../../common/data/datapalsu";
 import Header from "../../../components/layout/signed/Header";
 import Footer from "../../../components//layout/signed/Footer";
 import { tokens } from "../../../common/hooks/Theme";
-// import Create from "./create";
-import { styled } from "@mui/material/styles";
+import Create from "./create"
+// import { useGetProvincesQuery } from "../../../slices/master-data";
+// import Axios, { axios } from 'axios'
+
+// import { styled } from "@mui/material/styles";
 
 function CustomToolbar() {
   return (
     <GridToolbarContainer>
-      {/* <Create /> */}
+      <Create />
       <GridToolbarExport />
     </GridToolbarContainer>
   );
 }
+const AllWO = () => {
+  //mengambil data dari Api
+// const Users = ({setSelectedLink, Link}) => {
+//   const {state: {users}, dispatch} = useValue()
+// }          
+//   useEffect(() =>{
+//     setSelectedLink(link)
+//     if(users.length ===0) getListSubheaderUtilityClass(dispatch) 
+//   }, [])
 
-function AllWO() {
+// const  [works, setWorks] = useState([])
+
+// useEffect(() =>{
+//   getWorks()
+// }, [])
+
+// const getWorks = async () => {
+//   const response = await Axios.get("https://localhoost:5000/works")
+//   setWorks(response.data)
+// }
+
+
+
+const [pageSize, setPageSize] = useState(10)
+
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+  
+
 
   // const {
   //   data: dataProvinces,
@@ -39,28 +67,28 @@ function AllWO() {
   // else if (isFetching) console.log("status: fetching");
   // else if (isSuccess) console.log("Provinces:", dataProvinces);
 
-  const [value, setValue] = React.useState("1");
+  // const [value, setValue] = React.useState("1");
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  // const handleChange = (event, newValue) => {
+  //   setValue(newValue);
+  // };
 
-  const handleFileInputChange = (e) => {
-    const selectedFile = e.target.files[0];
-    if (selectedFile) {
-      // Handle file upload logic here
-    }
-  };
+  // const handleFileInputChange = (e) => {
+  //   const selectedFile = e.target.files[0];
+  //   if (selectedFile) {
+  //     // Handle file upload logic here
+  //   }
+  // };
 
-  const handleChooseFileClick = () => {
-    // Membuka dialog pencarian file saat tombol "Choose File" diklik
-    const fileInput = document.getElementById("fileInput");
-    fileInput.click();
-  };
+  // const handleChooseFileClick = () => {
+  //   // Membuka dialog pencarian file saat tombol "Choose File" diklik
+  //   const fileInput = document.getElementById("fileInput");
+  //   fileInput.click();
+  // };
 
-  const handleUploadClick = () => {
-    // Handle upload logic here
-  };
+  // const handleUploadClick = () => {
+  //   // Handle upload logic here
+  // };
 
   const handleDetailClick = (row) => {
     console.log("Detail clicked for row:", row);
@@ -70,47 +98,59 @@ function AllWO() {
     console.log("Delete clicked for id:", id);
   };
 
-  const columns = [
-    { field: "id", headerName: "No", flex: 0.5 },
-    { field: "registrarId", headerName: "Registrar ID" },
+  const columns = useMemo (() =>
+  [
+    { field: "number", headerName: "NUMBER", flex: 0.5, type:'number' },
+    { field: "subject", headerName: "SUBJECT" },
     {
-      field: "name",
-      headerName: "Name",
+      field: "departement",
+      headerName: "DEPARTMENT",
       flex: 1,
       cellClassName: "name-column--cell",
     },
     {
       field: "age",
-      headerName: "Age",
+      headerName: "AGE(DAYS)",
       type: "number",
       headerAlign: "left",
       align: "left",
     },
     {
-      field: "phone",
-      headerName: "Phone Number",
+      field: "work-order",
+      headerName: "WORK ORDER TYPE",
       flex: 1,
     },
     {
-      field: "email",
-      headerName: "Email",
+      field: "assigned",
+      headerName: "ASSIGNED TO",
       flex: 1,
     },
     {
-      field: "address",
-      headerName: "Address",
+      field: "priority",
+      headerName: "Priority",
       flex: 1,
     },
     {
-      field: "city",
-      headerName: "City",
+      field: "status",
+      headerName: "STATUS",
       flex: 1,
+      // type: 'singleSelect',
+      // valueOptions: ['basic','editor','admin'],
+      // editable: true,
+    },
+    {
+      field:"created-at",
+      headerName:"CREATED AT",
+      type: 'text'
+      
     },
     {
       field: "actions",
       headerName: "Actions",
       flex: 1,
       sortable: false,
+      type: 'actions',
+      editable:true,
       renderCell: (params) => (
         <div>
           <button onClick={() => handleDetailClick(params.row)}>Detail</button>
@@ -120,23 +160,29 @@ function AllWO() {
         </div>
       ),
     },
-  ];
-
-  const VisuallyHiddenInput = styled("input")({
-    clip: "rect(0 0 0 0)",
-    clipPath: "inset(50%)",
-    height: 1,
-    overflow: "hidden",
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    whiteSpace: "nowrap",
-    width: 1,
-  });
-
+  ], []
+  ) 
+  
+  // const VisuallyHiddenInput = styled("input")({
+  //   clip: "rect(0 0 0 0)",
+  //   clipPath: "inset(50%)",
+  //   height: 1,
+  //   overflow: "hidden",
+  //   position: "absolute",
+  //   bottom: 0,
+  //   left: 0,
+  //   whiteSpace: "nowrap",
+  //   width: 1,
+  // });
+  
   return (
     <Box m="10px">
-      <Header title="Work Orders" subtitle="All Work Orders" />
+      <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Header title="Work Orders" subtitle="All Work Orders" />
+
+      </Box>
+
+
       <Box
         display="grid"
         gridTemplateColumns="repeat(12, 1fr)"
@@ -144,9 +190,9 @@ function AllWO() {
         gap="20px"
       >
         <Box
-          gridColumn="span 1"
+          gridColumn="span 2"
           display="flex"
-          height="150px"
+          gridRow="span 1"
           justifyContent="space-between"
           alignItems="center"
           borderRadius="10px"
@@ -157,14 +203,18 @@ function AllWO() {
         >
           <Box mx={3}>
             <Typography variant="h7" color="white">
-              Contoh Card 1
+              667
+            </Typography>
+            <br />
+            <Typography variant="h7" color="white">
+              All
             </Typography>
           </Box>
         </Box>
         <Box
-          gridColumn="span 1"
+          gridColumn="span 2"
           display="flex"
-          height="150px"
+          gridRow="span 1"
           justifyContent="space-between"
           alignItems="center"
           borderRadius="10px"
@@ -175,14 +225,18 @@ function AllWO() {
         >
           <Box mx={3}>
             <Typography variant="h7" color="white">
-              Contoh Card 2
+              0
+            </Typography>
+            <br />
+            <Typography variant="h7" color="white">
+              Not Assign
             </Typography>
           </Box>
         </Box>
         <Box
-          gridColumn="span 1"
+          gridColumn="span 2"
           display="flex"
-          height="150px"
+          gridRow="span 1"
           justifyContent="space-between"
           alignItems="center"
           borderRadius="10px"
@@ -193,14 +247,18 @@ function AllWO() {
         >
           <Box mx={3}>
             <Typography variant="h7" color="white">
-              Contoh Card 3
+              108
+            </Typography>
+            <br />
+            <Typography variant="h7" color="white">
+              Not Started
             </Typography>
           </Box>
         </Box>
         <Box
-          gridColumn="span 1"
+          gridColumn="span 2"
           display="flex"
-          height="150px"
+          gridRow="span 1"
           justifyContent="space-between"
           alignItems="center"
           borderRadius="10px"
@@ -211,11 +269,62 @@ function AllWO() {
         >
           <Box mx={3}>
             <Typography variant="h7" color="white">
-              Contoh Card 4
+              10
+            </Typography>
+            <br />
+            <Typography variant="h7" color="white">
+              Started
+            </Typography>
+          </Box>
+        </Box>
+        <Box
+          gridColumn="span 2"
+          display="flex"
+          gridRow="span 1"
+          justifyContent="space-between"
+          alignItems="center"
+          borderRadius="10px"
+          sx={{
+            background: "#7D7C7C",
+            boxShadow: "0px 8px 8px rgba(0, 0, 0, 0.3)",
+          }}
+        >
+          <Box mx={3}>
+            <Typography variant="h7" color="white">
+              335
+            </Typography>
+            <br />
+            <Typography variant="h7" color="white">
+              Completed <br /> /Need <br /> Feedback
+            </Typography>
+          </Box>
+        </Box>
+        <Box
+          gridColumn="span 2"
+          display="flex"
+          gridRow="span 1"
+          justifyContent="space-between"
+          alignItems="center"
+          borderRadius="10px"
+          sx={{
+            background: "#7D7C7C",
+            boxShadow: "0px 8px 8px rgba(0, 0, 0, 0.3)",
+          }}
+        >
+          <Box mx={3}>
+            <Typography variant="h7" color="white">
+              224
+            </Typography>
+            <br />
+            <Typography variant="h7" color="white">
+              Finished
             </Typography>
           </Box>
         </Box>
       </Box>
+
+
+
       <Paper sx={{ borderRadius: "10px 10px 10px 10px" }}>
         <Box
           m="40px 0 0 0"
@@ -251,10 +360,20 @@ function AllWO() {
         >
           {/* {isSuccess && ( kalo make APi */}
           <DataGrid
-            rows={mockDataContacts}
             columns={columns}
+            rows= {data}
+            // getRowId={row=>row.id}
+            rowsPerPageOptions={[10, 25, 50, 100]}
+            pageSize={pageSize}
+            onPageSizeChange = {(newPageSize)=> setPageSize(newPageSize)}
+            getRowSpacing={params => ({
+              top:params.isFirstVisible ? 0:5,
+              bottom:params.isFirstVisible ? 0:5,
+            })}
             slots={{ toolbar: CustomToolbar }}
-            // rows={dataProvinces?.data?.province?.records}
+          //  pagination
+          //  autoPageSize
+          //   // rows={dataProvinces?.data?.province?.records}
             // columns={columns} ini kalo udah make API
             // slots={{ toolbar: CustomToolbar }}
           />

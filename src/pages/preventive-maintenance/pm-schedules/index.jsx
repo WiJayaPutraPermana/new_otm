@@ -27,7 +27,7 @@ function CustomToolbar() {
       <Box>
           <FormLabel
             sx={{
-              marginBottom: "2px",
+              marginBottom: "8px",
               fontSize: "14px",
               fontWeight: "bold",
               marginRight: "8px",

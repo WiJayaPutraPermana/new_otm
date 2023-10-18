@@ -18,13 +18,14 @@ import Header from "../../../components/layout/signed/Header";
 import Footer from "../../../components//layout/signed/Footer";
 import { tokens } from "../../../common/hooks/Theme";
 import Create from "./create";
+import Detail from "./detail";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import { Search } from "@mui/icons-material";
 import { styled } from "@mui/material/styles";
-import DriveFileMoveIcon from '@mui/icons-material/DriveFileMove';
+import DriveFileMoveIcon from "@mui/icons-material/DriveFileMove";
 
 function CustomToolbar() {
   return (
@@ -132,8 +133,26 @@ function AllPM() {
       sortable: false,
       renderCell: (params) => (
         <div>
-          <button onClick={() => handleDetailClick(params.row)}>Detail</button>
-          <button onClick={() => handleDeleteClick(params.row.id)}>Delete</button>
+          <Button onClick={() => handleDetailClick(params.row)}>
+            <Detail />
+          </Button>
+          <Button
+            sx={{
+              backgroundColor: "#D80032",
+              color: "#fff",
+              padding: "1px",
+              borderRadius: "4px",
+              cursor: "pointer",
+              transition: "background-color 0.3s",
+              marginTop: "1px",
+              "&:hover": {
+                backgroundColor: "#C70039",
+              },
+            }}
+            onClick={() => handleDeleteClick(params.row.id)}
+          >
+            Delete
+          </Button>
         </div>
       ),
     },
@@ -150,7 +169,6 @@ function AllPM() {
     whiteSpace: "nowrap",
     width: 1,
   });
-  
 
   return (
     <Box m="10px">
@@ -234,28 +252,24 @@ function AllPM() {
                 <h2>File Upload</h2>
                 <DriveFileMoveIcon sx={{ fontSize: 100 }} />
                 <Box position="center">
-                <input
-                  type="file"
-                  id="fileInput"
-                  name="file"
-                />
-                                <Button
-                  onClick={handleUploadClick}
-                  sx={{
-                    backgroundColor: "#009688",
-                    color: "#fff",
-                    padding: "5px 10px", 
-                    borderRadius: "4px",
-                    cursor: "pointer",
-                    transition: "background-color 0.3s",
-                    marginTop: "8px", 
-                    "&:hover": {
-                      backgroundColor: "#007a66",
-                    },
-                  }}
-                >
-                  Upload
-                </Button>
+                  <input type="file" id="fileInput" name="file" />
+                  <Button
+                    onClick={handleUploadClick}
+                    sx={{
+                      backgroundColor: "#009688",
+                      color: "#fff",
+                      padding: "5px 10px",
+                      borderRadius: "4px",
+                      cursor: "pointer",
+                      transition: "background-color 0.3s",
+                      marginTop: "8px",
+                      "&:hover": {
+                        backgroundColor: "#007a66",
+                      },
+                    }}
+                  >
+                    Upload
+                  </Button>
                 </Box>
               </Box>
               <hr

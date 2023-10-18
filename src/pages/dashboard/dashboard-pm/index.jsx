@@ -3,6 +3,7 @@ import Header from "../../../components/layout/signed/Header";
 import { tokens } from "../../../common/hooks/Theme";
 import PieChartPM from "../../../components/layout/signed/PieChartPMy";
 import Dates from "../../../components/layout/signed/Date";
+import { red } from "@mui/material/colors";
 
 const DashboardLabanan = () => {
   const theme = useTheme();
@@ -11,7 +12,7 @@ const DashboardLabanan = () => {
   return (
     <Box m="20px">
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title="Dashboard Preventive Maintenance"/>
+        <Header title="Dashboard Preventive Maintenance" />
         <Box>
         <Button
             sx={{
@@ -25,10 +26,8 @@ const DashboardLabanan = () => {
             <Dates/>
           </Button>
         </Box>
-
       </Box>
-      
-      
+
       <Box
         display="grid"
         gridTemplateColumns="repeat(12, 1fr)"
@@ -53,7 +52,7 @@ const DashboardLabanan = () => {
           </Box>
         </Box>
 
-         <Box
+        <Box
           gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -71,7 +70,7 @@ const DashboardLabanan = () => {
         </Box>
 
         {/* row 2 */}
-         <Box
+        <Box
           gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -88,7 +87,7 @@ const DashboardLabanan = () => {
           </Box>
         </Box>
 
-         <Box
+        <Box
           gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -105,7 +104,7 @@ const DashboardLabanan = () => {
           </Box>
         </Box>
         {/* row 3 */}
-         <Box
+        <Box
           gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -122,7 +121,7 @@ const DashboardLabanan = () => {
           </Box>
         </Box>
 
-         <Box
+        <Box
           gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -140,7 +139,7 @@ const DashboardLabanan = () => {
         </Box>
 
         {/* row 4 */}
-         <Box
+        <Box
           gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -157,7 +156,7 @@ const DashboardLabanan = () => {
           </Box>
         </Box>
 
-         <Box
+        <Box
           gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -175,7 +174,7 @@ const DashboardLabanan = () => {
         </Box>
 
         {/* row 5 */}
-         <Box
+        <Box
           gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -192,7 +191,7 @@ const DashboardLabanan = () => {
           </Box>
         </Box>
 
-         <Box
+        <Box
           gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -210,7 +209,7 @@ const DashboardLabanan = () => {
         </Box>
 
         {/* row 6 */}
-         <Box
+        <Box
           gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -227,7 +226,7 @@ const DashboardLabanan = () => {
           </Box>
         </Box>
 
-         <Box
+        <Box
           gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -243,10 +242,9 @@ const DashboardLabanan = () => {
             <PieChartPM isDashboard={true} />
           </Box>
         </Box>
-
       </Box>
     </Box>
-  )
+  );
 };
 
 export default DashboardLabanan;

@@ -16,7 +16,6 @@ import FactCheckOutlinedIcon from '@mui/icons-material/FactCheckOutlined';
 import DiamondOutlinedIcon from '@mui/icons-material/DiamondOutlined';
 import PlumbingOutlinedIcon from '@mui/icons-material/PlumbingOutlined';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import ChevronRightOutlinedIcon from '@mui/icons-material/ChevronRightOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
